@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pronoun Family Adventure - Grade 7 English Learning</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .tab-btn.active {
+            background-color: #0284c7;
+            color: white;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col justify-between">
+
+    <!-- Header Navigation -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+                <div class="bg-gradient-to-tr from-sky-500 to-indigo-600 text-white p-2.5 rounded-xl shadow-md">
+                    <i class="fa-solid fa-people-roof text-xl sm:text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-lg sm:text-xl text-slate-900 leading-tight">Pronoun Family Adventure</h1>
+                    <p class="text-xs text-sky-600 font-semibold">Grade 7 English • Personal Pronouns Unit</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-2 text-xs font-semibold text-slate-500">
+                <span class="bg-sky-100 text-sky-800 px-3 py-1 rounded-full"><i class="fa-solid fa-graduation-cap mr-1"></i> Student Learning Mode</span>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="bg-slate-100/80 border-t border-slate-200 px-4">
+            <div class="max-w-7xl mx-auto flex items-center justify-start sm:justify-center overflow-x-auto gap-2 py-2 text-sm font-medium">
+                <button onclick="switchTab('materi')" id="tab-materi" class="tab-btn active px-4 py-2 rounded-xl transition flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-book-open"></i> 1. Material & Family Tree
+                </button>
+                <button onclick="switchTab('latihan')" id="tab-latihan" class="tab-btn px-4 py-2 rounded-xl transition flex items-center gap-2 whitespace-nowrap text-slate-600 hover:bg-slate-200">
+                    <i class="fa-solid fa-pen-ruler"></i> 2. Exercises
+                </button>
+                <button onclick="switchTab('game')" id="tab-game" class="tab-btn px-4 py-2 rounded-xl transition flex items-center gap-2 whitespace-nowrap text-slate-600 hover:bg-slate-200">
+                    <i class="fa-solid fa-gamepad"></i> 3. Mini Game
+                </button>
+                <button onclick="switchTab('evaluasi')" id="tab-evaluasi" class="tab-btn px-4 py-2 rounded-xl transition flex items-center gap-2 whitespace-nowrap text-slate-600 hover:bg-slate-200">
+                    <i class="fa-solid fa-trophy"></i> 4. Score & Certificate
+                </button>
+                <button onclick="switchTab('refleksi')" id="tab-refleksi" class="tab-btn px-4 py-2 rounded-xl transition flex items-center gap-2 whitespace-nowrap text-slate-600 hover:bg-slate-200">
+                    <i class="fa-solid fa-heart"></i> 5. Self-Reflection
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full space-y-6">
+
+        <!-- User Identity & Progress Card -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
+                
+                <!-- User Profile Input -->
+                <div class="lg:col-span-1 space-y-3 border-b lg:border-b-0 lg:border-r border-slate-200 pb-4 lg:pb-0 lg:pr-6">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-id-card text-sky-600 text-lg"></i>
+                        <h3 class="font-bold text-slate-800 text-sm sm:text-base">Student Identity</h3>
+                    </div>
+                    <div class="space-y-2">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-500 mb-1">Student Full Name:</label>
+                            <input type="text" id="user-name-input" oninput="syncUserName()" placeholder="Enter your full name..." class="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl focus:border-sky-500 focus:ring-1 focus:ring-sky-500 outline-none font-semibold text-slate-800">
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-500 mb-1">Class / Grade:</label>
+                                <input type="text" id="user-class-input" placeholder="e.g. 7-A" class="w-full px-3 py-1.5 text-xs border border-slate-300 rounded-lg focus:border-sky-500 outline-none text-slate-800">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-500 mb-1">Student No.:</label>
+                                <input type="text" id="user-no-input" placeholder="e.g. 15" class="w-full px-3 py-1.5 text-xs border border-slate-300 rounded-lg focus:border-sky-500 outline-none text-slate-800">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learning Progress Bar -->
+                <div class="lg:col-span-2 space-y-3">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-xs uppercase tracking-wider font-bold text-sky-600">My Learning Progress</span>
+                            <h4 class="font-extrabold text-slate-800 text-sm sm:text-base" id="progress-status-title">Let's Start Learning!</h4>
+                        </div>
+                        <span class="text-xl sm:text-2xl font-black text-sky-600" id="progress-percent-text">0%</span>
+                    </div>
+
+                    <!-- Visual Progress Bar -->
+                    <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden p-0.5 border border-slate-200">
+                        <div id="progress-bar-fill" class="bg-gradient-to-r from-sky-500 to-indigo-600 h-full rounded-full transition-all duration-500 w-0"></div>
+                    </div>
+
+                    <!-- Checklist Status Indicators -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1 text-xs">
+                        <div id="prog-badge-materi" class="flex items-center gap-1.5 text-slate-400">
+                            <i class="fa-solid fa-circle-check"></i> <span>Family Tree</span>
+                        </div>
+                        <div id="prog-badge-latihan" class="flex items-center gap-1.5 text-slate-400">
+                            <i class="fa-solid fa-circle-check"></i> <span>Exercises</span>
+                        </div>
+                        <div id="prog-badge-game" class="flex items-center gap-1.5 text-slate-400">
+                            <i class="fa-solid fa-circle-check"></i> <span>Mini Game</span>
+                        </div>
+                        <div id="prog-badge-refleksi" class="flex items-center gap-1.5 text-slate-400">
+                            <i class="fa-solid fa-circle-check"></i> <span>Reflection</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Section 1: Material & Family Tree -->
+        <section id="sec-materi" class="space-y-6">
+            <!-- Hero Banner -->
+            <div class="bg-gradient-to-r from-sky-600 via-indigo-600 to-purple-600 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+                <div class="relative z-10 max-w-2xl">
+                    <span class="bg-white/20 text-white text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wide">Core Material</span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold mt-2 mb-3">Understanding Pronouns</h2>
+                    <p class="text-sky-100 text-sm sm:text-base leading-relaxed">
+                        A <strong>pronoun</strong> is a word used in place of a noun (a person, animal, or object). Using pronouns makes our speech and writing smooth and avoids repeating names like "My father, my father..." over and over again!
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-white/10 border border-white/20 px-3 py-1 rounded-lg text-xs">👨‍👩‍👧‍👦 Theme: Meet My Family</span>
+                        <span class="bg-white/10 border border-white/20 px-3 py-1 rounded-lg text-xs">🎯 Goal: Master Pronoun Forms</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-users text-white/10 text-9xl absolute -right-4 -bottom-4 hidden sm:block"></i>
+            </div>
+
+            <!-- Interactive Family Tree Explorer (Layout fixed & no cut-off) -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-2">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2">
+                            <i class="fa-solid fa-sitemap text-sky-600"></i> Interactive Family Tree Explorer
+                        </h3>
+                        <p class="text-slate-500 text-xs sm:text-sm">Click on any family member card below to explore how pronouns work in sentences!</p>
+                    </div>
+                    <span class="text-xs bg-sky-100 text-sky-800 px-3 py-1 rounded-full font-semibold flex items-center gap-1">
+                        <i class="fa-solid fa-volume-high"></i> Click audio button to listen
+                    </span>
+                </div>
+
+                <!-- Family Cards Grid (Responsive layout, full height) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                    <div onclick="selectFamilyMember('father')" class="family-card cursor-pointer p-5 rounded-2xl border-2 border-slate-200 hover:border-sky-500 hover:bg-sky-50/80 transition text-center group flex flex-col items-center justify-between">
+                        <div class="w-16 h-16 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-3xl mb-3 group-hover:scale-110 transition shadow-sm">👴</div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 text-base">Father</h4>
+                            <p class="text-xs text-sky-600 font-semibold mt-0.5">Male Singular</p>
+                        </div>
+                        <div class="mt-3 w-full pt-2 border-t border-slate-100 text-xs text-slate-500 font-medium">
+                            <span class="bg-slate-100 px-2 py-1 rounded">He / Him / His</span>
+                        </div>
+                    </div>
+
+                    <div onclick="selectFamilyMember('mother')" class="family-card cursor-pointer p-5 rounded-2xl border-2 border-slate-200 hover:border-sky-500 hover:bg-sky-50/80 transition text-center group flex flex-col items-center justify-between">
+                        <div class="w-16 h-16 bg-pink-100 text-pink-600 rounded-2xl flex items-center justify-center text-3xl mb-3 group-hover:scale-110 transition shadow-sm">👩</div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 text-base">Mother</h4>
+                            <p class="text-xs text-pink-600 font-semibold mt-0.5">Female Singular</p>
+                        </div>
+                        <div class="mt-3 w-full pt-2 border-t border-slate-100 text-xs text-slate-500 font-medium">
+                            <span class="bg-slate-100 px-2 py-1 rounded">She / Her / Hers</span>
+                        </div>
+                    </div>
+
+                    <div onclick="selectFamilyMember('brother')" class="family-card cursor-pointer p-5 rounded-2xl border-2 border-slate-200 hover:border-sky-500 hover:bg-sky-50/80 transition text-center group flex flex-col items-center justify-between">
+                        <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-3xl mb-3 group-hover:scale-110 transition shadow-sm">👦</div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 text-base">Brother / Me</h4>
+                            <p class="text-xs text-blue-600 font-semibold mt-0.5">First / Third Person</p>
+                        </div>
+                        <div class="mt-3 w-full pt-2 border-t border-slate-100 text-xs text-slate-500 font-medium">
+                            <span class="bg-slate-100 px-2 py-1 rounded">I / He / Him</span>
+                        </div>
+                    </div>
+
+                    <div onclick="selectFamilyMember('parents')" class="family-card cursor-pointer p-5 rounded-2xl border-2 border-slate-200 hover:border-sky-500 hover:bg-sky-50/80 transition text-center group flex flex-col items-center justify-between">
+                        <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl mb-3 group-hover:scale-110 transition shadow-sm">🧑‍🧑‍🧒</div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 text-base">Parents & Family</h4>
+                            <p class="text-xs text-emerald-600 font-semibold mt-0.5">Plural Group</p>
+                        </div>
+                        <div class="mt-3 w-full pt-2 border-t border-slate-100 text-xs text-slate-500 font-medium">
+                            <span class="bg-slate-100 px-2 py-1 rounded">They / We / Them</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dynamic Example Box (Fully responsive & scrollable text if needed) -->
+                <div id="family-example-box" class="bg-slate-900 text-white rounded-2xl p-6 border border-slate-700 shadow-lg">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-3">
+                        <div>
+                            <span class="text-xs font-bold text-sky-400 uppercase tracking-widest block">Family Pronoun Showcase</span>
+                            <h4 class="text-lg font-bold text-white" id="family-member-title">Father (He - Him - His)</h4>
+                        </div>
+                        <button onclick="speakText()" class="self-start sm:self-auto bg-sky-600 hover:bg-sky-500 text-white text-xs px-4 py-2 rounded-xl flex items-center gap-2 font-semibold transition">
+                            <i class="fa-solid fa-volume-high text-sm"></i> Listen Pronunciation
+                        </button>
+                    </div>
+                    
+                    <div id="family-member-details" class="space-y-3 text-sm sm:text-base leading-relaxed">
+                        <!-- Populated dynamically by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pronoun Summary Table -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm overflow-hidden">
+                <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-table text-indigo-600"></i> Pronouns Classification Reference
+                </h3>
+                <div class="overflow-x-auto w-full">
+                    <table class="w-full text-left border-collapse text-xs sm:text-sm min-w-[650px]">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-700">
+                                <th class="p-3.5 rounded-l-xl font-bold">Subject Pronoun</th>
+                                <th class="p-3.5 font-bold">Object Pronoun</th>
+                                <th class="p-3.5 font-bold">Possessive Adjective</th>
+                                <th class="p-3.5 font-bold">Possessive Pronoun</th>
+                                <th class="p-3.5 rounded-r-xl font-bold">Reflexive Pronoun</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr class="hover:bg-sky-50/50">
+                                <td class="p-3.5 font-bold text-sky-700">I</td>
+                                <td class="p-3.5">Me</td>
+                                <td class="p-3.5">My (family)</td>
+                                <td class="p-3.5">Mine</td>
+                                <td class="p-3.5">Myself</td>
+                            </tr>
+                            <tr class="hover:bg-sky-50/50">
+                                <td class="p-3.5 font-bold text-sky-700">You</td>
+                                <td class="p-3.5">You</td>
+                                <td class="p-3.5">Your (house)</td>
+                                <td class="p-3.5">Yours</td>
+                                <td class="p-3.5">Yourself / Yourselves</td>
+                            </tr>
+                            <tr class="hover:bg-sky-50/50">
+                                <td class="p-3.5 font-bold text-sky-700">He</td>
+                                <td class="p-3.5">Him</td>
+                                <td class="p-3.5">His (father)</td>
+                                <td class="p-3.5">His</td>
+                                <td class="p-3.5">Himself</td>
+                            </tr>
+                            <tr class="hover:bg-sky-50/50">
+                                <td class="p-3.5 font-bold text-sky-700">She</td>
+                                <td class="p-3.5">Her</td>
+                                <td class="p-3.5">Her (mother)</td>
+                                <td class="p-3.5">Hers</td>
+                                <td class="p-3.5">Herself</td>
+                            </tr>
+                            <tr class="hover:bg-sky-50/50">
+                                <td class="p-3.5 font-bold text-sky-700">It</td>
+                                <td class="p-3.5">It</td>
+                                <td class="p-3.5">Its (toy)</td>
+                                <td class="p-3.5">-</td>
+                                <td class="p-3.5">Itself</td>
+                            </tr>
+                            <tr class="hover:bg-sky-50/50">
+                                <td class="p-3.5 font-bold text-sky-700">We</td>
+                                <td class="p-3.5">Us</td>
+                                <td class="p-3.5">Our (parents)</td>
+                                <td class="p-3.5">Ours</td>
+                                <td class="p-3.5">Ourselves</td>
+                            </tr>
+                            <tr class="hover:bg-sky-50/50">
+                                <td class="p-3.5 font-bold text-sky-700">They</td>
+                                <td class="p-3.5">Them</td>
+                                <td class="p-3.5">Their (car)</td>
+                                <td class="p-3.5">Theirs</td>
+                                <td class="p-3.5">Themselves</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Interactive Exercises -->
+        <section id="sec-latihan" class="hidden space-y-6">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-200 pb-4 mb-6 gap-3">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-800">Interactive Pronoun Exercises</h2>
+                        <p class="text-slate-500 text-sm">Select an exercise format below to test your understanding!</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="switchExerciseType('mc')" id="ex-btn-mc" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-sky-600 text-white">1. Multiple Choice</button>
+                        <button onclick="switchExerciseType('fitb')" id="ex-btn-fitb" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200">2. Fill in the Blank</button>
+                        <button onclick="switchExerciseType('match')" id="ex-btn-match" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200">3. Matching Pairs</button>
+                        <button onclick="switchExerciseType('essay')" id="ex-btn-essay" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200">4. Sentence Writing</button>
+                    </div>
+                </div>
+
+                <!-- Exercise 1: Multiple Choice -->
+                <div id="ex-container-mc" class="space-y-6">
+                    <div id="mc-questions-list" class="space-y-6">
+                        <!-- Rendered by JS -->
+                    </div>
+                    <button onclick="submitMultipleChoice()" class="w-full sm:w-auto px-6 py-3 bg-sky-600 text-white rounded-xl font-bold hover:bg-sky-700 transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> Submit Multiple Choice
+                    </button>
+                </div>
+
+                <!-- Exercise 2: Fill in the Blank -->
+                <div id="ex-container-fitb" class="hidden space-y-6">
+                    <p class="text-slate-600 text-sm italic bg-amber-50 border border-amber-200 p-3 rounded-lg">
+                        📌 <strong>Instructions:</strong> Type the correct pronoun in each blank (he, she, my, her, him, our, they, etc.).
+                    </p>
+                    <div id="fitb-questions-list" class="space-y-4">
+                        <!-- Rendered by JS -->
+                    </div>
+                    <button onclick="submitFillInTheBlank()" class="w-full sm:w-auto px-6 py-3 bg-sky-600 text-white rounded-xl font-bold hover:bg-sky-700 transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> Submit Fill in the Blank
+                    </button>
+                </div>
+
+                <!-- Exercise 3: Matching Pair -->
+                <div id="ex-container-match" class="hidden space-y-6">
+                    <p class="text-slate-600 text-sm italic bg-indigo-50 border border-indigo-200 p-3 rounded-lg">
+                        📌 <strong>Instructions:</strong> Click a word on the left column, then click its corresponding pronoun pair on the right column!
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-bold text-slate-700 mb-2">Noun / Subject Term</h4>
+                            <div id="match-left-column" class="space-y-2">
+                                <!-- JS Populated -->
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-700 mb-2">Matching Pronoun Form</h4>
+                            <div id="match-right-column" class="space-y-2">
+                                <!-- JS Populated -->
+                            </div>
+                        </div>
+                    </div>
+                    <div id="match-status" class="text-sm font-semibold text-sky-600 mt-2"></div>
+                </div>
+
+                <!-- Exercise 4: Essay / Sentence Creation -->
+                <div id="ex-container-essay" class="hidden space-y-6">
+                    <p class="text-slate-600 text-sm italic bg-purple-50 border border-purple-200 p-3 rounded-lg">
+                        📌 <strong>Instructions:</strong> Write complete sentences in English based on the prompts about your family.
+                    </p>
+                    <div id="essay-questions-list" class="space-y-6">
+                        <!-- Rendered by JS -->
+                    </div>
+                    <button onclick="submitEssay()" class="w-full sm:w-auto px-6 py-3 bg-purple-600 text-white rounded-xl font-bold hover:bg-purple-700 transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-check"></i> Evaluate My Sentences
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section 3: Mini Game -->
+        <section id="sec-game" class="hidden space-y-6">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm text-center">
+                <div class="max-w-xl mx-auto space-y-3">
+                    <span class="bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full font-bold">🕹️ Educational Game</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-800">Pronoun Family Pop Quest</h2>
+                    <p class="text-slate-500 text-sm">
+                        Help family members find their matching pronouns! Click the correct option before the timer runs out.
+                    </p>
+                </div>
+
+                <!-- Game Arena Box -->
+                <div id="game-arena" class="relative mt-6 bg-slate-900 rounded-2xl min-h-[380px] p-6 text-white flex flex-col justify-between overflow-hidden shadow-inner border border-slate-700">
+                    <!-- Game Header Bar -->
+                    <div class="flex justify-between items-center bg-slate-800/80 px-4 py-2 rounded-xl text-sm font-bold z-10">
+                        <div>Game Score: <span id="game-score" class="text-amber-400">0</span></div>
+                        <div>Time Remaining: <span id="game-timer" class="text-emerald-400">30</span>s</div>
+                    </div>
+
+                    <!-- Target Prompt Center -->
+                    <div id="game-prompt-box" class="my-auto py-6 z-10">
+                        <p class="text-slate-400 text-xs uppercase tracking-widest mb-1">Find the Correct Pronoun For:</p>
+                        <h3 id="game-target-word" class="text-3xl sm:text-4xl font-black text-yellow-300 animate-pulse">
+                            Click "Start Game"!
+                        </h3>
+                        <p id="game-target-hint" class="text-xs text-slate-300 mt-2">(e.g., My mother -> She / Her)</p>
+                    </div>
+
+                    <!-- Options Floating Grid -->
+                    <div id="game-options-container" class="grid grid-cols-2 sm:grid-cols-4 gap-3 z-10">
+                        <!-- Options generated dynamically -->
+                    </div>
+
+                    <!-- Start Overlay -->
+                    <div id="game-start-overlay" class="absolute inset-0 bg-slate-950/90 backdrop-blur-sm flex flex-col items-center justify-center z-20 p-6">
+                        <i class="fa-solid fa-gamepad text-5xl text-amber-400 mb-3 animate-float"></i>
+                        <h3 class="text-2xl font-bold mb-2">Ready to Play?</h3>
+                        <p class="text-slate-300 text-sm mb-6 text-center max-w-md">Earn points in 30 seconds by matching family terms with their correct English pronouns quickly!</p>
+                        <button onclick="startGame()" class="px-8 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black rounded-xl text-lg hover:scale-105 transition shadow-lg">
+                            <i class="fa-solid fa-play"></i> START GAME
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Evaluation & Certificate -->
+        <section id="sec-evaluasi" class="hidden space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Score Breakdown -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm md:col-span-1 space-y-4">
+                    <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+                        <i class="fa-solid fa-chart-pie text-sky-600"></i> Score Summary
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center text-sm p-3 bg-slate-50 rounded-xl">
+                            <span class="text-slate-600">Multiple Choice</span>
+                            <span id="score-mc-display" class="font-bold text-slate-800">0 / 100</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm p-3 bg-slate-50 rounded-xl">
+                            <span class="text-slate-600">Fill in the Blank</span>
+                            <span id="score-fitb-display" class="font-bold text-slate-800">0 / 100</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm p-3 bg-slate-50 rounded-xl">
+                            <span class="text-slate-600">Matching Pairs</span>
+                            <span id="score-match-display" class="font-bold text-slate-800">0 / 100</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm p-3 bg-slate-50 rounded-xl">
+                            <span class="text-slate-600">Sentence Writing</span>
+                            <span id="score-essay-display" class="font-bold text-slate-800">0 / 100</span>
+                        </div>
+                    </div>
+                    <div class="pt-2 border-t border-slate-200">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-slate-700">Overall Average:</span>
+                            <span id="final-avg-score" class="text-2xl font-black text-sky-600">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital Certificate Preview -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm md:col-span-2 space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+                            <i class="fa-solid fa-certificate text-amber-500"></i> Digital Certificate
+                        </h3>
+                        <button onclick="window.print()" class="px-3 py-1.5 bg-slate-800 text-white rounded-lg text-xs font-bold hover:bg-slate-700">
+                            <i class="fa-solid fa-print"></i> Print / Save PDF
+                        </button>
+                    </div>
+
+                    <!-- Printable Certificate View -->
+                    <div id="printable-certificate" class="border-4 border-double border-amber-400 bg-gradient-to-b from-amber-50/40 to-white p-6 sm:p-8 rounded-xl text-center space-y-4 relative">
+                        <div class="text-amber-500 text-3xl font-serif">🎓 CERTIFICATE OF ACHIEVEMENT</div>
+                        <p class="text-xs text-slate-500 uppercase tracking-widest font-semibold">Grade 7 English Interactive Learning</p>
+                        <p class="text-sm text-slate-600">This certificate is proudly awarded to:</p>
+                        
+                        <input type="text" id="student-name-input" value="Grade 7 Student" oninput="syncUserNameFromCert()" class="text-xl sm:text-2xl font-black text-slate-800 text-center border-b-2 border-slate-300 focus:border-sky-500 outline-none px-4 py-1 bg-transparent w-full max-w-xs">
+                        
+                        <p class="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+                            For successfully completing the interactive unit on <strong>English Personal Pronouns and Family Theme</strong> with excellence.
+                        </p>
+                        
+                        <div class="flex justify-around items-center pt-4 text-xs text-slate-500 border-t border-amber-200">
+                            <div>
+                                <p class="font-bold text-slate-700">Final Grade</p>
+                                <p id="cert-score" class="text-base font-black text-sky-600">0</p>
+                            </div>
+                            <div>
+                                <p class="font-bold text-slate-700">Status</p>
+                                <p id="cert-status" class="text-base font-black text-emerald-600">COMPLETED</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Self-Reflection -->
+        <section id="sec-refleksi" class="hidden space-y-6">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm max-w-3xl mx-auto space-y-6">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                        <i class="fa-solid fa-heart text-pink-500"></i> Student Learning Reflection
+                    </h2>
+                    <p class="text-slate-500 text-sm mt-1">
+                        Take a moment to reflect on your learning experience today!
+                    </p>
+                </div>
+
+                <!-- Emotion Picker -->
+                <div class="space-y-2">
+                    <label class="block text-sm font-semibold text-slate-700">1. How do you feel after learning English Pronouns today?</label>
+                    <div class="flex gap-4">
+                        <button onclick="setEmotion('happy')" class="emotion-btn flex-1 p-3 border rounded-xl hover:bg-sky-50 text-center transition">
+                            <span class="text-3xl">😃</span>
+                            <p class="text-xs font-semibold mt-1">Very Happy</p>
+                        </button>
+                        <button onclick="setEmotion('neutral')" class="emotion-btn flex-1 p-3 border rounded-xl hover:bg-sky-50 text-center transition">
+                            <span class="text-3xl">😐</span>
+                            <p class="text-xs font-semibold mt-1">Neutral</p>
+                        </button>
+                        <button onclick="setEmotion('confused')" class="emotion-btn flex-1 p-3 border rounded-xl hover:bg-sky-50 text-center transition">
+                            <span class="text-3xl">🧐</span>
+                            <p class="text-xs font-semibold mt-1">Need Practice</p>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Self Assessment Checklist -->
+                <div class="space-y-3">
+                    <label class="block text-sm font-semibold text-slate-700">2. Check the goals you have accomplished:</label>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer p-2 rounded bg-slate-50 hover:bg-slate-100">
+                            <input type="checkbox" onchange="updateOverallProgress()" class="rounded text-sky-600 focus:ring-sky-500">
+                            <span>I can distinguish between Subject Pronouns (I, He, She, They) and Object Pronouns (Me, Him, Her, Them).</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer p-2 rounded bg-slate-50 hover:bg-slate-100">
+                            <input type="checkbox" onchange="updateOverallProgress()" class="rounded text-sky-600 focus:ring-sky-500">
+                            <span>I can identify Possessive Adjectives correctly (My, Your, His, Her, Our, Their).</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer p-2 rounded bg-slate-50 hover:bg-slate-100">
+                            <input type="checkbox" onchange="updateOverallProgress()" class="rounded text-sky-600 focus:ring-sky-500">
+                            <span>I can write simple sentences describing my family members using pronouns.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Note Input -->
+                <div class="space-y-2">
+                    <label class="block text-sm font-semibold text-slate-700">3. Notes or Questions for Your Teacher:</label>
+                    <textarea rows="3" placeholder="Write any question or reflection notes here..." class="w-full p-3 border border-slate-300 rounded-xl text-sm focus:border-sky-500 focus:ring-1 focus:ring-sky-500 outline-none"></textarea>
+                </div>
+
+                <button onclick="saveReflection()" class="w-full py-3 bg-emerald-600 text-white rounded-xl font-bold hover:bg-emerald-700 transition">
+                    <i class="fa-solid fa-floppy-disk"></i> Save Reflection
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500 mt-8">
+        <p>© Interactive English Learning Module • Grade 7 Pronouns Unit</p>
+    </footer>
+
+    <script>
+        let scores = { mc: 0, fitb: 0, match: 0, essay: 0 };
+        let progressFlags = {
+            familyExplored: false,
+            latihanAttempted: false,
+            gamePlayed: false,
+            reflectionSaved: false
+        };
+
+        let currentUtteranceText = "My father is a teacher. He goes to work every morning.";
+
+        // Sync Name
+        function syncUserName() {
+            const val = document.getElementById('user-name-input').value;
+            document.getElementById('student-name-input').value = val || "Grade 7 Student";
+        }
+
+        function syncUserNameFromCert() {
+            const val = document.getElementById('student-name-input').value;
+            document.getElementById('user-name-input').value = val;
+        }
+
+        // Family Tree Content Data in English
+        const familyData = {
+            father: {
+                title: "Father (Male Singular Pronouns: He / Him / His)",
+                sentences: [
+                    "<strong>Subject Pronoun:</strong> <span class='text-sky-400 font-bold'>He</span> is my father. He works at a hospital.",
+                    "<strong>Object Pronoun:</strong> Everyone respects <span class='text-sky-400 font-bold'>him</span> because he is very kind.",
+                    "<strong>Possessive Adjective:</strong> This is <span class='text-sky-400 font-bold'>his</span> favorite car.",
+                    "<strong>Possessive Pronoun:</strong> The red car parked in the driveway is <span class='text-sky-400 font-bold'>his</span>."
+                ],
+                speech: "He is my father. Everyone respects him. This is his favorite car."
+            },
+            mother: {
+                title: "Mother (Female Singular Pronouns: She / Her / Hers)",
+                sentences: [
+                    "<strong>Subject Pronoun:</strong> <span class='text-pink-400 font-bold'>She</span> bakes delicious cookies every Sunday.",
+                    "<strong>Object Pronoun:</strong> My brother and I love <span class='text-pink-400 font-bold'>her</span> very much.",
+                    "<strong>Possessive Adjective:</strong> <span class='text-pink-400 font-bold'>Her</span> recipe is secret and special.",
+                    "<strong>Possessive Pronoun:</strong> The cookbook on the kitchen counter is <span class='text-pink-400 font-bold'>hers</span>."
+                ],
+                speech: "She bakes delicious cookies. My brother and I love her very much."
+            },
+            brother: {
+                title: "Brother / Me (First / Third Person Singular)",
+                sentences: [
+                    "<strong>Subject Pronoun:</strong> <span class='text-blue-400 font-bold'>He</span> plays basketball after school.",
+                    "<strong>Object Pronoun:</strong> I often practice with <span class='text-blue-400 font-bold'>him</span> on weekends.",
+                    "<strong>Possessive Adjective:</strong> <span class='text-blue-400 font-bold'>His</span> bicycle is blue.",
+                    "<strong>Reflexive Pronoun:</strong> He repaired the bike <span class='text-blue-400 font-bold'>himself</span>."
+                ],
+                speech: "He plays basketball. I practice with him. His bicycle is blue."
+            },
+            parents: {
+                title: "Parents & Family (Plural Group Pronouns: They / We / Them / Their)",
+                sentences: [
+                    "<strong>Subject Pronoun:</strong> <span class='text-emerald-400 font-bold'>They</span> are loving parents.",
+                    "<strong>Object Pronoun:</strong> We always listen to <span class='text-emerald-400 font-bold'>them</span>.",
+                    "<strong>Possessive Adjective:</strong> <span class='text-emerald-400 font-bold'>Their</span> house is warm and cozy.",
+                    "<strong>Possessive Pronoun:</strong> This beautiful garden is <span class='text-emerald-400 font-bold'>theirs</span>."
+                ],
+                speech: "They are loving parents. We always listen to them."
+            }
+        };
+
+        // English Questions Data
+        const mcQuestions = [
+            {
+                q: "1. My mother is cooking in the kitchen. ____ is preparing dinner for our family.",
+                options: ["He", "She", "They", "It"],
+                answer: 1,
+                exp: "'Mother' is a singular female, so the correct subject pronoun is 'She'."
+            },
+            {
+                q: "2. My father forgot ____ wallet on the dining table.",
+                options: ["his", "her", "my", "their"],
+                answer: 0,
+                exp: "'Father' is a singular male noun. The corresponding possessive adjective is 'his'."
+            },
+            {
+                q: "3. Look at my grandparents! ____ are watering flowers in the garden.",
+                options: ["We", "She", "They", "He"],
+                answer: 2,
+                exp: "'Grandparents' refers to a plural group of people, so we use 'They'."
+            },
+            {
+                q: "4. This is my little sister, Lisa. I made a lovely birthday card for ____.",
+                options: ["him", "her", "them", "us"],
+                answer: 1,
+                exp: "Lisa is female and functions as the object in this sentence, so we use 'her'."
+            },
+            {
+                q: "5. My brother and I enjoy playing chess. ____ play together every evening.",
+                options: ["We", "They", "He", "You"],
+                answer: 0,
+                exp: "'My brother and I' includes the speaker, so the combined pronoun is 'We'."
+            }
+        ];
+
+        const fitbQuestions = [
+            { q: "1. Mr. David is my uncle. _____ is an English teacher.", answer: ["he"] },
+            { q: "2. My sister has a cute puppy. _____ name is Max.", answer: ["its"] },
+            { q: "3. My parents are very kind. I love _____ dearly.", answer: ["them"] },
+            { q: "4. I bought a new school bag. This is _____ bag.", answer: ["my"] },
+            { q: "5. Sarah and Jane are cousins. _____ study at Grade 7 together.", answer: ["they"] }
+        ];
+
+        const matchPairs = [
+            { left: "Father", right: "He / Him / His", id: 1 },
+            { left: "Mother", right: "She / Her / Hers", id: 2 },
+            { left: "My Brother and I", right: "We / Us / Our", id: 3 },
+            { left: "Grandparents", right: "They / Them / Their", id: 4 }
+        ];
+
+        const essayQuestions = [
+            { q: "1. Rewrite this sentence using a proper pronoun to avoid repetition: 'My sister is funny. My sister likes reading storybooks.'", hint: "Model Answer: 'My sister is funny. She likes reading storybooks.'" },
+            { q: "2. Write one sentence about your father using the Subject Pronoun 'He' and Possessive 'His'!", hint: "Model Answer: 'He is my father and his hobby is gardening.'" }
+        ];
+
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playSound(type) {
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                
+                if (type === 'success') {
+                    osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(659.25, audioCtx.currentTime + 0.15);
+                    gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.3);
+                } else if (type === 'error') {
+                    osc.frequency.setValueAtTime(220, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(110, audioCtx.currentTime + 0.2);
+                    gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.25);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.25);
+                }
+            } catch(e){}
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('main > section').forEach(sec => sec.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.classList.add('text-slate-600');
+            });
+
+            document.getElementById(`sec-${tabId}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tab-${tabId}`);
+            activeBtn.classList.add('active');
+            activeBtn.classList.remove('text-slate-600');
+        }
+
+        function selectFamilyMember(key) {
+            const data = familyData[key];
+            if (!data) return;
+            document.getElementById('family-member-title').innerText = data.title;
+            const container = document.getElementById('family-member-details');
+            container.innerHTML = data.sentences.map(s => `<p class="border-b border-slate-800 pb-2">${s}</p>`).join('');
+            currentUtteranceText = data.speech;
+            progressFlags.familyExplored = true;
+            updateOverallProgress();
+            playSound('success');
+        }
+
+        function speakText() {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(currentUtteranceText);
+                utterance.lang = 'en-US';
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("Speech synthesis is not supported in this browser.");
+            }
+        }
+
+        function switchExerciseType(type) {
+            const types = ['mc', 'fitb', 'match', 'essay'];
+            types.forEach(t => {
+                document.getElementById(`ex-container-${t}`).classList.add('hidden');
+                document.getElementById(`ex-btn-${t}`).className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200";
+            });
+            document.getElementById(`ex-container-${type}`).classList.remove('hidden');
+            document.getElementById(`ex-btn-${type}`).className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-sky-600 text-white";
+        }
+
+        function renderExercises() {
+            // Render MC
+            const mcContainer = document.getElementById('mc-questions-list');
+            mcContainer.innerHTML = mcQuestions.map((q, idx) => `
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <p class="font-bold text-slate-800 mb-3 text-sm sm:text-base">${q.q}</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        ${q.options.map((opt, oIdx) => `
+                            <label class="flex items-center gap-2 p-3 border border-slate-200 rounded-lg bg-white hover:bg-sky-50 cursor-pointer text-sm font-medium">
+                                <input type="radio" name="mc-q-${idx}" value="${oIdx}" class="text-sky-600 focus:ring-sky-500">
+                                <span>${opt}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                    <div id="mc-feedback-${idx}" class="mt-2 text-xs hidden"></div>
+                </div>
+            `).join('');
+
+            // Render FITB
+            const fitbContainer = document.getElementById('fitb-questions-list');
+            fitbContainer.innerHTML = fitbQuestions.map((q, idx) => `
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <label class="font-semibold text-slate-800 text-sm">${q.q}</label>
+                    <input type="text" id="fitb-input-${idx}" placeholder="Answer..." class="px-3 py-2 border border-slate-300 rounded-lg text-sm focus:border-sky-500 outline-none w-full sm:w-40 font-semibold">
+                </div>
+                <div id="fitb-feedback-${idx}" class="text-xs hidden pl-2"></div>
+            `).join('');
+
+            // Render Matching
+            renderMatchingPairs();
+
+            // Render Essay
+            const essayContainer = document.getElementById('essay-questions-list');
+            essayContainer.innerHTML = essayQuestions.map((q, idx) => `
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                    <p class="font-bold text-slate-800 text-sm">${q.q}</p>
+                    <textarea id="essay-input-${idx}" rows="2" placeholder="Write your sentence in English..." class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:border-sky-500 outline-none"></textarea>
+                    <div id="essay-feedback-${idx}" class="text-xs text-slate-500 hidden bg-white p-3 rounded-lg border border-slate-200">
+                        <strong>${q.hint}</strong>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        let selectedLeftMatch = null;
+        let selectedRightMatch = null;
+        let matchedCount = 0;
+
+        function renderMatchingPairs() {
+            const leftCol = document.getElementById('match-left-column');
+            const rightCol = document.getElementById('match-right-column');
+
+            leftCol.innerHTML = matchPairs.map(p => `
+                <button onclick="selectMatch('left', ${p.id}, this)" class="w-full text-left p-3 rounded-lg border border-slate-200 bg-white hover:border-sky-500 text-sm font-semibold transition">
+                    ${p.left}
+                </button>
+            `).join('');
+
+            const shuffledRight = [...matchPairs].sort(() => Math.random() - 0.5);
+            rightCol.innerHTML = shuffledRight.map(p => `
+                <button onclick="selectMatch('right', ${p.id}, this)" class="w-full text-left p-3 rounded-lg border border-slate-200 bg-white hover:border-sky-500 text-sm font-semibold transition">
+                    ${p.right}
+                </button>
+            `).join('');
+        }
+
+        function selectMatch(side, id, el) {
+            if (side === 'left') {
+                document.querySelectorAll('#match-left-column button').forEach(b => b.classList.remove('border-sky-500', 'bg-sky-50'));
+                el.classList.add('border-sky-500', 'bg-sky-50');
+                selectedLeftMatch = { id, el };
+            } else {
+                document.querySelectorAll('#match-right-column button').forEach(b => b.classList.remove('border-sky-500', 'bg-sky-50'));
+                el.classList.add('border-sky-500', 'bg-sky-50');
+                selectedRightMatch = { id, el };
+            }
+
+            if (selectedLeftMatch && selectedRightMatch) {
+                if (selectedLeftMatch.id === selectedRightMatch.id) {
+                    playSound('success');
+                    selectedLeftMatch.el.className = "w-full text-left p-3 rounded-lg border border-emerald-500 bg-emerald-50 text-emerald-800 text-sm font-bold cursor-default";
+                    selectedRightMatch.el.className = "w-full text-left p-3 rounded-lg border border-emerald-500 bg-emerald-50 text-emerald-800 text-sm font-bold cursor-default";
+                    selectedLeftMatch.el.disabled = true;
+                    selectedRightMatch.el.disabled = true;
+                    matchedCount++;
+                    if (matchedCount === matchPairs.length) {
+                        scores.match = 100;
+                        progressFlags.latihanAttempted = true;
+                        updateOverallProgress();
+                        document.getElementById('match-status').innerText = "🎉 Perfect! You have correctly matched all pronoun pairs.";
+                    }
+                } else {
+                    playSound('error');
+                    alert("Incorrect pair! Please try again.");
+                }
+                selectedLeftMatch = null;
+                selectedRightMatch = null;
+            }
+        }
+
+        function submitMultipleChoice() {
+            let correct = 0;
+            mcQuestions.forEach((q, idx) => {
+                const selected = document.querySelector(`input[name="mc-q-${idx}"]:checked`);
+                const fb = document.getElementById(`mc-feedback-${idx}`);
+                fb.classList.remove('hidden');
+                if (selected && parseInt(selected.value) === q.answer) {
+                    correct++;
+                    fb.className = "mt-2 text-xs text-emerald-600 font-bold";
+                    fb.innerText = "✓ Correct! " + q.exp;
+                } else {
+                    fb.className = "mt-2 text-xs text-rose-600 font-bold";
+                    fb.innerText = "✗ Incorrect. " + q.exp;
+                }
+            });
+
+            scores.mc = Math.round((correct / mcQuestions.length) * 100);
+            progressFlags.latihanAttempted = true;
+            playSound(scores.mc >= 60 ? 'success' : 'error');
+            updateOverallProgress();
+            alert(`Multiple Choice Result: Your Score is ${scores.mc}/100`);
+        }
+
+        function submitFillInTheBlank() {
+            let correct = 0;
+            fitbQuestions.forEach((q, idx) => {
+                const input = document.getElementById(`fitb-input-${idx}`).value.trim().toLowerCase();
+                const fb = document.getElementById(`fitb-feedback-${idx}`);
+                fb.classList.remove('hidden');
+                if (q.answer.includes(input)) {
+                    correct++;
+                    fb.className = "text-xs text-emerald-600 font-bold mt-1";
+                    fb.innerText = "✓ Correct!";
+                } else {
+                    fb.className = "text-xs text-rose-600 font-bold mt-1";
+                    fb.innerText = `✗ Correct answer: ${q.answer[0]}`;
+                }
+            });
+
+            scores.fitb = Math.round((correct / fitbQuestions.length) * 100);
+            progressFlags.latihanAttempted = true;
+            playSound(scores.fitb >= 60 ? 'success' : 'error');
+            updateOverallProgress();
+            alert(`Fill in the Blank Result: Your Score is ${scores.fitb}/100`);
+        }
+
+        function submitEssay() {
+            let evaluatedCount = 0;
+            essayQuestions.forEach((q, idx) => {
+                const val = document.getElementById(`essay-input-${idx}`).value.trim();
+                const fb = document.getElementById(`essay-feedback-${idx}`);
+                fb.classList.remove('hidden');
+                if (val.length > 5) evaluatedCount++;
+            });
+            scores.essay = evaluatedCount > 0 ? 100 : 50;
+            progressFlags.latihanAttempted = true;
+            updateOverallProgress();
+            playSound('success');
+            alert("Sentence writing evaluated! Model answers are displayed below.");
+        }
+
+        function updateOverallProgress() {
+            const avg = Math.round((scores.mc + scores.fitb + scores.match + scores.essay) / 4);
+            document.getElementById('score-mc-display').innerText = `${scores.mc} / 100`;
+            document.getElementById('score-fitb-display').innerText = `${scores.fitb} / 100`;
+            document.getElementById('score-match-display').innerText = `${scores.match} / 100`;
+            document.getElementById('score-essay-display').innerText = `${scores.essay} / 100`;
+            document.getElementById('final-avg-score').innerText = avg;
+            document.getElementById('cert-score').innerText = avg;
+
+            let totalPct = 0;
+            if (progressFlags.familyExplored) {
+                totalPct += 25;
+                document.getElementById('prog-badge-materi').className = "flex items-center gap-1.5 text-emerald-600 font-semibold";
+            }
+            if (progressFlags.latihanAttempted) {
+                totalPct += 25;
+                document.getElementById('prog-badge-latihan').className = "flex items-center gap-1.5 text-emerald-600 font-semibold";
+            }
+            if (progressFlags.gamePlayed) {
+                totalPct += 25;
+                document.getElementById('prog-badge-game').className = "flex items-center gap-1.5 text-emerald-600 font-semibold";
+            }
+            if (progressFlags.reflectionSaved) {
+                totalPct += 25;
+                document.getElementById('prog-badge-refleksi').className = "flex items-center gap-1.5 text-emerald-600 font-semibold";
+            }
+
+            document.getElementById('progress-bar-fill').style.width = `${totalPct}%`;
+            document.getElementById('progress-percent-text').innerText = `${totalPct}%`;
+
+            let statusTitle = "Let's Start Learning!";
+            if (totalPct === 25) statusTitle = "Great! You Explored the Family Tree";
+            else if (totalPct === 50) statusTitle = "Awesome! Exercises Attempted";
+            else if (totalPct === 75) statusTitle = "Cool! Mini Game Completed";
+            else if (totalPct === 100) statusTitle = "🎉 Outstanding! All Learning Modules Completed";
+
+            document.getElementById('progress-status-title').innerText = statusTitle;
+        }
+
+        let gameTimer = null;
+        let timeLeft = 30;
+        let currentGameScore = 0;
+        let currentQuestionObj = null;
+
+        const gameBank = [
+            { target: "My Mother", correct: "She", options: ["She", "He", "They", "It"] },
+            { target: "My Father's Bag", correct: "His", options: ["His", "Her", "Their", "Its"] },
+            { target: "My Sister and I", correct: "We", options: ["We", "They", "He", "She"] },
+            { target: "My Grandparents", correct: "They", options: ["They", "He", "She", "It"] },
+            { target: "The Family Pet", correct: "It", options: ["It", "He", "They", "We"] },
+            { target: "Gift for Uncle", correct: "Him", options: ["Him", "Her", "Them", "Us"] }
+        ];
+
+        function startGame() {
+            document.getElementById('game-start-overlay').classList.add('hidden');
+            currentGameScore = 0;
+            timeLeft = 30;
+            document.getElementById('game-score').innerText = currentGameScore;
+            document.getElementById('game-timer').innerText = timeLeft;
+
+            nextGameQuestion();
+
+            clearInterval(gameTimer);
+            gameTimer = setInterval(() => {
+                timeLeft--;
+                document.getElementById('game-timer').innerText = timeLeft;
+                if (timeLeft <= 0) {
+                    endGame();
+                }
+            }, 1000);
+        }
+
+        function nextGameQuestion() {
+            const idx = Math.floor(Math.random() * gameBank.length);
+            currentQuestionObj = gameBank[idx];
+            document.getElementById('game-target-word').innerText = currentQuestionObj.target;
+            
+            const shuffled = [...currentQuestionObj.options].sort(() => Math.random() - 0.5);
+            const container = document.getElementById('game-options-container');
+            container.innerHTML = shuffled.map(opt => `
+                <button onclick="checkGameAnswer('${opt}')" class="p-4 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 rounded-xl font-bold text-lg shadow-md transition transform active:scale-95">
+                    ${opt}
+                </button>
+            `).join('');
+        }
+
+        function checkGameAnswer(opt) {
+            if (opt === currentQuestionObj.correct) {
+                currentGameScore += 20;
+                playSound('success');
+            } else {
+                playSound('error');
+            }
+            document.getElementById('game-score').innerText = currentGameScore;
+            nextGameQuestion();
+        }
+
+        function endGame() {
+            clearInterval(gameTimer);
+            progressFlags.gamePlayed = true;
+            updateOverallProgress();
+            playSound('success');
+            alert(`Game Finished! Your Final Score: ${currentGameScore}`);
+            document.getElementById('game-start-overlay').classList.remove('hidden');
+        }
+
+        function setEmotion(type) {
+            document.querySelectorAll('.emotion-btn').forEach(b => b.classList.remove('border-sky-500', 'bg-sky-50'));
+            event.currentTarget.classList.add('border-sky-500', 'bg-sky-50');
+            playSound('success');
+        }
+
+        function saveReflection() {
+            progressFlags.reflectionSaved = true;
+            updateOverallProgress();
+            playSound('success');
+            alert("Thank you! Your learning reflection has been saved.");
+        }
+
+        window.onload = function() {
+            selectFamilyMember('father');
+            renderExercises();
+        };
+    </script>
+</body>
+</html>
